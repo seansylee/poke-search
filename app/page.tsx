@@ -227,7 +227,7 @@ export default async function Home({
             Poke Search
           </p>
           <h1 className="mt-4 max-w-sm text-4xl font-black tracking-tight text-slate-950 md:text-5xl">
-            Search the PokeAPI by Pokemon name
+            Pokemon search goes brrr 🚀 
           </h1>
           <p className="mt-4 max-w-md text-base leading-7 text-slate-600">
             Type a Pokemon like pikachu, mew, or charizard and fetch its core
