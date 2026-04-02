@@ -99,6 +99,9 @@ type SearchParams = Promise<{
   pokemon?: string | string[];
 }>;
 
+const SECRET_ALIAS_QUERY = "josh kim";
+const SECRET_ALIAS_TARGET = "graveler";
+
 async function getResource<T>(url: string) {
   const response = await fetch(url, { cache: "no-store" });
 
@@ -195,7 +198,9 @@ export default async function Home({
     ? params.pokemon[0]
     : params.pokemon;
   const pokemonName = rawPokemon?.trim().toLowerCase() ?? "";
-  const pokemon = pokemonName ? await getPokemon(pokemonName) : null;
+  const resolvedPokemonName =
+    pokemonName === SECRET_ALIAS_QUERY ? SECRET_ALIAS_TARGET : pokemonName;
+  const pokemon = resolvedPokemonName ? await getPokemon(resolvedPokemonName) : null;
   const species = pokemon ? await getPokemonSpecies(pokemon.species.url) : null;
   const evolutionChain = species
     ? await getEvolutionChain(species.evolution_chain.url)
